@@ -1,5 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { coinbase } from './queries/queries'
+
+const client = new ApolloClient({
+  uri: coinbase.uri,
+  cache: new InMemoryCache()
+});
+
+client
+  .query({
+    query: coinbase.query
+  })
+  .then(result => console.log(result));
+
+
 
 function App() {
   return (
