@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { navigate } from 'hookrouter';
 import { geo } from '../../../../api/queries'
 
 export default function CountryList() {
@@ -10,7 +11,7 @@ export default function CountryList() {
     console.log("🚀 ~ file: index.js ~ line 16 ~ List ~ data", data)
 
     return data.countries.map(({ code, name, languages, phone, native, capital }) => (
-        <div key={code}>
+        <div key={code} onClick={() => navigate('/countries/ad')}>
             <div key='info'>
                 {code}: {name}
             </div>
